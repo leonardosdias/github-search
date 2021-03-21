@@ -1,8 +1,8 @@
-import { LIST_REPOSITORIES } from '.';
+import { DETAIL_REPOSITORIE } from '.';
 
 import api from '../services/api';
 
-export function listRepositories(value) {
+export function detailRepositorie(value) {
     return (dispatch) => {
         return api.get(`repos/${value}`).then((response) => {
 
@@ -39,7 +39,7 @@ export function listRepositories(value) {
             issues.user.login = response.data.issues.user.login;
 
             dispatch({
-                type: LIST_REPOSITORIES, repositorie, issues
+                type: DETAIL_REPOSITORIE, repositorie, issues
             });
         });
     }

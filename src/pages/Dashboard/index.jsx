@@ -2,52 +2,44 @@ import React, { useCallback, useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
+import { ArrowRightOutlined, SearchOutlined } from '@ant-design/icons';
 
 import { searchRepositorie } from '../../actions/searchRepositories';
 import { Form, Input, Button, Row, Col } from 'antd';
 import { Repositories, Title } from './styles.js';
 
-
 const Dashboard = (props) => {
-    const [state, setState] = useState('');
+    const [state, setState] = useState([]);
 
     const onChange = useCallback((event) => {
         setState(event.target.value);
     }, []);
 
-    const { searchRepositorie, repositorie } = props;
-
-    console.log(props);
+    const { searchRepositorie, repositories } = props;
 
     return (
         <>
             <Title>Repositórios</Title>
 
-            <Form
-                name="basic"
-            // initialValues={{ remember: true }}
-            // onFinish={onChange}
-            // onFinishFailed={onFinishFailed}
-            >
+            <Form name="search-repositories" >
                 <Row>
-                    <label className="label">Digite o nome do repositório e autor</label>
+                    <label className="label">Digite o nome do autor</label>
                 </Row>
 
                 <Row justify="space-between">
-                    <Col span={18}>
+                    <Col span={20}>
                         <Form.Item
                             label=""
                             name="username"
-                            rules={[{ required: true, message: 'Digite o nome do autor/repositório.' }]}
-
                         >
                             <Input size="large" onChange={onChange} value={state} />
                         </Form.Item>
                     </Col>
 
-                    <Col span={4}>
+                    <Col>
                         <Form.Item>
                             <Button type="primary" htmlType="button" size="large" onClick={() => searchRepositorie(state)}>
+                                <SearchOutlined />
                                 Pesquisar
                             </Button>
                         </Form.Item>
@@ -57,7 +49,7 @@ const Dashboard = (props) => {
 
             <Row justify="space-between">
                 <Col span={24}>
-                    {repositorie ?
+                    {repositories.length ? repositories.map(repositorie => (
                         <Repositories>
                             <Link key={repositorie.full_name} to={`/repository/${repositorie.full_name}`}>
                                 <img
@@ -68,10 +60,10 @@ const Dashboard = (props) => {
                                     <strong>{repositorie.full_name}</strong>
                                     <p>{repositorie.description}</p>
                                 </div>
+                                <ArrowRightOutlined />
                             </Link>
                         </Repositories>
-                        : null
-                    }
+                    )) : null}
                 </Col>
             </Row>
         </>
@@ -79,7 +71,7 @@ const Dashboard = (props) => {
 };
 
 const mapStateToProps = store => ({
-    repositorie: store.initialRepositorieState.repositorie
+    repositories: store.initialRepositoriesState.repositories
 });
 
 const mapDispatchToProps = dispatch =>

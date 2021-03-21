@@ -1,7 +1,7 @@
 import { SEARCH_REPOSITORIES } from '../actions';
 
 const initialState = {
-    repositorie: ''
+    repositories: ''
 };
 
 export const searchRepositorieReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ export const searchRepositorieReducer = (state = initialState, action) => {
         case SEARCH_REPOSITORIES:
             return {
                 ...state,
-                repositorie: action.repositorie
+                repositories: action.repositories
             };
         default:
             return state;

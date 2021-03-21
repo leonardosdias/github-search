@@ -5,20 +5,17 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import { Button } from 'antd';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
 
-import { listRepositories } from '../../actions/listRepositories';
+import { detailRepositorie } from '../../actions/detailRepositorie';
 import api from '../../services/api';
 import { Header, RepositoryInfo, Issues } from './styles';
 
 
-const Detail = (props) => {
+const Detail = () => {
     const { params } = useRouteMatch();
     const [repository, setRepository] = useState();
     const [issues, setIssues] = useState([]);
 
-    const { searchRepositorie, repositorie } = props;
-
     useEffect(() => {
-        // listRepositories();
         api.get(`/repos/${params.repository}`).then((response) => {
             setRepository(response.data);
         });
@@ -27,10 +24,7 @@ const Detail = (props) => {
             setIssues(response.data);
         });
 
-        console.log(params);
-
-    }, [params.repository]);
-
+    }, [params]);
 
     return (
         <>
@@ -81,7 +75,6 @@ const Detail = (props) => {
                     </a>
                 ))}
             </Issues>
-
         </>
     )
 }
@@ -91,8 +84,6 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({ listRepositories }, dispatch);
+    bindActionCreators({ detailRepositorie }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Detail);
-
-// export default Detail;

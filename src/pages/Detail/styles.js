@@ -64,7 +64,7 @@ ul{
     strong{
       display:block;
       font-size:36px;
-      color:#3d3d4d;
+      color:#1890ff;
     }
   }
 }
@@ -76,7 +76,7 @@ export const Issues = styled.div`
   a {
     border: 2px solid #1890ff;
     background: #fff;
-    border-radius: 5px;
+    border-radius: 2px;
     width: 100%;
     padding: 24px;
     display: block;
@@ -109,7 +109,7 @@ export const Issues = styled.div`
     }
     svg {
       margin-left: auto;
-      color: #cbcbd6;
+      color: #3d3d3d;
     }
   }
 `;

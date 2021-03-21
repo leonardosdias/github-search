@@ -9,11 +9,12 @@ export const Title = styled.h1`
 `;
 
 export const Repositories = styled.div`
-  margin-top: 80px;
+  margin-top: 20px;
   
   a {
+    min-height: 154px;
     border: 2px solid #1890ff;
-    border-radius: 5px;
+    border-radius: 2px;
     background: #fff;
     width: 100%;
     padding: 24px;
@@ -25,7 +26,7 @@ export const Repositories = styled.div`
     transition: transform 0.2s;
 
     & + a {
-      margin-top: 16px;
+      margin-top: 5px;
     }
 
     &:hover {
@@ -53,7 +54,7 @@ export const Repositories = styled.div`
     }
     svg {
       margin-left: auto;
-      color: #cbcbd6;
+      color: #3d3d3d;
     }
   }
 `;
