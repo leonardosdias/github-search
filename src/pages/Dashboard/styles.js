@@ -10,6 +10,7 @@ export const Title = styled.h1`
 
 export const Repositories = styled.div`
   margin-top: 20px;
+  text-align:justify;
   
   a {
     min-height: 154px;
@@ -30,7 +31,7 @@ export const Repositories = styled.div`
     }
 
     &:hover {
-      transform: translateX(15px);
+      transform: translateX(7px);
     }
 
     img {

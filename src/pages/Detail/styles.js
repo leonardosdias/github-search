@@ -24,6 +24,7 @@ svg{
 
 export const RepositoryInfo = styled.section`
 margin-top:80px;
+text-align:justify;
 
 header{
   display:flex;
@@ -72,6 +73,7 @@ ul{
 
 export const Issues = styled.div`
   margin-top: 80px;
+  text-align:justify;
   
   a {
     border: 2px solid #1890ff;
@@ -91,7 +93,7 @@ export const Issues = styled.div`
     }
 
     &:hover {
-      transform: translateX(15px);
+      transform: translateX(7px);
     }
 
     div {
