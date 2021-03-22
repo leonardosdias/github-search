@@ -59,11 +59,5 @@ Essas foram as tecnologias utilizadas nesse projeto.
 
 * **Leonardo Dias** - *Desenvolvimento* - [leonardosdias](https://github.com/leonardosdias)
 
-
-## 📄 Licença
-
-Este projeto está sob a licença (sua licença) - veja o arquivo [LICENSE.md](https://github.com/usuario/projeto/licenca) para detalhes.
-
-
 ---
 Este template foi criado por [Armstrong Lohãns](https://gist.github.com/lohhans).
