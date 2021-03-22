@@ -4,8 +4,7 @@ import api from '../services/api';
 
 export function detailRepositorie(value) {
     return (dispatch) => {
-        return api.get(`repos/${value}`).then((response) => {
-
+        return api.get(`/repos/${value}`).then((response) => {
             let repositorie = {
                 full_name: '',
                 description: '',

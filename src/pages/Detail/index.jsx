@@ -23,7 +23,6 @@ const Detail = () => {
         api.get(`/repos/${params.repository}/issues`).then((response) => {
             setIssues(response.data);
         });
-
     }, [params]);
 
     return (
@@ -80,7 +79,7 @@ const Detail = () => {
 }
 
 const mapStateToProps = store => ({
-    repositorie: store.state
+    repositorie: store.detailRepositorieState.repositorie
 });
 
 const mapDispatchToProps = dispatch =>

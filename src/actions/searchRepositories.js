@@ -1,13 +1,19 @@
 import { SEARCH_REPOSITORIES } from '.';
+import { message } from 'antd';
 
 import api from '../services/api';
 
-export function searchRepositorie(value) {
+export function searchRepositorie(username) {
     return (dispatch) => {
-        return api.get(`users/${value}/repos`).then((response) => {
-            dispatch({
-                type: SEARCH_REPOSITORIES, repositories: response.data
+        try{
+            return api.get(`users/${username}/repos`).then((response) => {
+                dispatch({
+                    type: SEARCH_REPOSITORIES, repositories: response.data
+                });
             });
-        });
+        }
+        catch{
+            message.warning('Autor não encontrado.')
+        }
     }
 };

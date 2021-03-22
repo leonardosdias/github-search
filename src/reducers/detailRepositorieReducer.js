@@ -9,7 +9,8 @@ export const detailRepositorieReducer = (state = initialState, action) => {
         case DETAIL_REPOSITORIE:
             return {
                 ...state,
-                repositorie: action.repositorie
+                repositorie: action.repositorie,
+                issues: action.issues,
             };
         default:
             return state;

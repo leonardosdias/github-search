@@ -10,18 +10,24 @@ import { Repositories, Title } from './styles.js';
 
 const Dashboard = (props) => {
     const [state, setState] = useState([]);
-
-    const onChange = useCallback((event) => {
-        setState(event.target.value);
-    }, []);
-
+    
     const { searchRepositorie, repositories } = props;
+
+    const handleSubmit = useCallback((data) => {
+        searchRepositorie(data.username);
+
+        setState(data.username);
+    }, [searchRepositorie]);
+
 
     return (
         <>
             <Title>Repositórios</Title>
 
-            <Form name="search-repositories" >
+            <Form name="search-repositories"
+                initialValues={{ remember: true }}
+                onFinish={handleSubmit}
+            >
                 <Row>
                     <label className="label">Digite o nome do autor</label>
                 </Row>
@@ -31,14 +37,19 @@ const Dashboard = (props) => {
                         <Form.Item
                             label=""
                             name="username"
+                            rules={[{ required: true, message: 'Digite o usuário do autor.' }]}
                         >
-                            <Input size="large" onChange={onChange} value={state} />
+                            <Input
+                                size="large"
+                                value={state}
+                                allowClear={true}
+                            />
                         </Form.Item>
                     </Col>
 
                     <Col>
                         <Form.Item>
-                            <Button type="primary" htmlType="button" size="large" onClick={() => searchRepositorie(state)}>
+                            <Button type="primary" htmlType="submit" size="large">
                                 <SearchOutlined />
                                 Pesquisar
                             </Button>
@@ -50,7 +61,7 @@ const Dashboard = (props) => {
             <Row justify="space-between">
                 <Col span={24}>
                     {repositories.length ? repositories.map(repositorie => (
-                        <Repositories>
+                        <Repositories key={repositorie.full_name}>
                             <Link key={repositorie.full_name} to={`/repository/${repositorie.full_name}`}>
                                 <img
                                     src={repositorie.owner.avatar_url}
