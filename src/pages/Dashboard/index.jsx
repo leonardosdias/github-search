@@ -29,7 +29,7 @@ const Dashboard = (props) => {
                 onFinish={handleSubmit}
             >
                 <Row>
-                    <label className="label">Digite o nome do autor</label>
+                    <label className="label">Digite o usuário do GitHub</label>
                 </Row>
 
                 <Row justify="space-between">
@@ -37,7 +37,7 @@ const Dashboard = (props) => {
                         <Form.Item
                             label=""
                             name="username"
-                            rules={[{ required: true, message: 'Digite o usuário do autor.' }]}
+                            rules={[{ required: true, message: 'Nome de usuário é obrigatório.' }]}
                         >
                             <Input
                                 size="large"

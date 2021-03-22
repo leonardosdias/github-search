@@ -1,6 +1,8 @@
 
 import { createGlobalStyle } from 'styled-components';
 
+import background from '../assets/github_background.svg';
+
 export const GlobalStyles = createGlobalStyle`
 * {
     margin: 0;
@@ -11,7 +13,7 @@ export const GlobalStyles = createGlobalStyle`
 
 body {
     -webkit-font-smoothing: antialiased;
-    background-color: #eeeeee;
+    background: #eeeeee url(${background}) no-repeat 50% top;
 }
 
 body, input, button {
